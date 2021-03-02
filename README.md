@@ -12,8 +12,9 @@
 
 ## Next updates
 
-- implement search
-- implement useContext
+[] implement search
+[] implement useContext
+[x] implemet styled-components
 
 ## Available Scripts
 
