@@ -12,8 +12,10 @@
 
 ## Next updates
 
-- implement search
-- implement useContext
+- [] implement search
+- [x] implement useContext
+- [x] implement styled-components
+- [x] update the modal
 
 ## Available Scripts
 

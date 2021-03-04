@@ -4,15 +4,15 @@ import styled from "styled-components";
 import typeColors from "../helpers/typeColors";
 
 const CardContent = styled.div`
-  height: 15rem;
-  width: 12.5rem;
+  height: 12rem;
+  width: 14rem;
   border-radius: 2rem;
   display: flex;
   flex-direction: column;
   align-items: center;
   background: white;
   padding: 1.2rem;
-  box-shadow: 7px 10px 20px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
   cursor: pointer;
   margin: 1.3rem;
 `;
@@ -21,6 +21,7 @@ const CardImg = styled.div`
   img {
     height: 5rem;
     width: 5rem;
+    margin-top: -50px;
   }
 `;
 
@@ -28,23 +29,25 @@ const CardName = styled.div`
   justify-content: center;
   display: flex;
   flex-direction: column;
-  margin-top: 0.8rem;
+  margin-top: 1rem;
   text-transform: capitalize;
   font-size: 1rem;
   align-items: center;
+  color: #021448;
+  h5 {
+    color: #c5c5c5;
+  }
 `;
 
-const CardTypes = styled.div`
+export const CardTypes = styled.div`
   display: flex;
   justify-content: space-evenly;
-  height: 3rem;
-  flex: 1;
   width: 100%;
   align-items: center;
-  margin-top: 1.2rem;
+  margin-top: 0.7rem;
 `;
 
-const Type = styled.div`
+export const Type = styled.div`
   display: flex;
   background: cyan;
   align-items: center;
@@ -57,8 +60,7 @@ const Type = styled.div`
 `;
 
 export const Card = ({ pokemon }) => {
-  const [isModal, setIsModal] = useState(false);
-
+  const [isShow, setIsModal] = useState(false);
   const types = pokemon.types.map((type) => (
     <Type key={type.slot} style={{ background: typeColors[type.type.name] }}>
       {type.type.name}
@@ -67,22 +69,21 @@ export const Card = ({ pokemon }) => {
   const pokemonId = String(pokemon.id).padStart(3, "0");
   return (
     <>
-      <CardContent
-        onClick={() => {
-          setIsModal(true);
-        }}
-      >
+      <CardContent onClick={() => setIsModal(true)}>
         <CardImg>
-          <img src={pokemon.sprites.front_default} alt={pokemon.name} />
+          <img
+            src={`https://pokeres.bastionbot.org/images/pokemon/${pokemon.id}.png`}
+            alt={pokemon.name}
+          />
         </CardImg>
         <CardName>
-          <h4>#{pokemonId}</h4>
+          <h5>#{pokemonId}</h5>
           <h4>{pokemon.name}</h4>
         </CardName>
         <CardTypes>{types}</CardTypes>
       </CardContent>
       <PokemonModal
-        isShow={isModal}
+        isShow={isShow}
         isClose={() => setIsModal(false)}
         pokemon={pokemon}
       />
