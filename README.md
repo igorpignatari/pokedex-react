@@ -4,6 +4,12 @@
   - Render each pokemon name, picture, id, pokemon type in a card
   - **When clicked, the card should toggle between displaying the pokemon status**
 
+## Built With
+
+- [PokéAPI](https://pokeapi.co/)
+- [React](https://reactjs.org/)
+- [Styled-Component](https://styled-components.com/)
+
 ## Project Requirements
 
 - components using state and props
@@ -12,10 +18,12 @@
 
 ## Next updates
 
-- [] implement search
+- [x] implement search
 - [x] implement useContext
 - [x] implement styled-components
 - [x] update the modal
+- [x] implement Memo
+-
 
 ## Available Scripts
 

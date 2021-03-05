@@ -2,8 +2,9 @@ import { useState, useEffect } from "react";
 
 export const useFetch = (url) => {
   const [pokemons, setPokemons] = useState([]);
-
+  const [isLoading, setIsLoading] = useState(false);
   useEffect(() => {
+    setIsLoading(true);
     const fetchData = async () => {
       const data = await fetch(url)
         .then((res) => res.json())
@@ -18,7 +19,8 @@ export const useFetch = (url) => {
       data.map((pokemon) => fetch(pokemon.url).then((res) => res.json()))
     );
     setPokemons(_pokemons);
+    setIsLoading(false);
   };
 
-  return { pokemons };
+  return { pokemons, isLoading };
 };

@@ -2,7 +2,7 @@ import { PokemonModal } from "./PokemonModal.jsx";
 import { useState } from "react";
 import styled from "styled-components";
 import typeColors from "../helpers/typeColors";
-
+import React, { memo } from "react";
 const CardContent = styled.div`
   height: 12rem;
   width: 14rem;
@@ -37,6 +37,9 @@ const CardName = styled.div`
   h5 {
     color: #c5c5c5;
   }
+  h4 {
+    text-transform: capitalize;
+  }
 `;
 
 export const CardTypes = styled.div`
@@ -59,7 +62,7 @@ export const Type = styled.div`
   font-weight: 600;
 `;
 
-export const Card = ({ pokemon }) => {
+const Card = ({ pokemon }) => {
   const [isShow, setIsModal] = useState(false);
   const types = pokemon.types.map((type) => (
     <Type key={type.slot} style={{ background: typeColors[type.type.name] }}>
@@ -90,3 +93,5 @@ export const Card = ({ pokemon }) => {
     </>
   );
 };
+
+export default memo(Card);

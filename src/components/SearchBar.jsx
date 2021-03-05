@@ -1,6 +1,7 @@
+import { useContext } from "react";
 import styled from "styled-components";
-
-export const SearchBar = styled.input`
+import { PokemonContext } from "../contexts/PokemonContext.jsx";
+const SearchBar = styled.input`
   width: 103rem;
   height: 40px;
   margin-top: 30px;
@@ -12,3 +13,14 @@ export const SearchBar = styled.input`
     opacity: 0.5;
   }
 `;
+
+export const SearchContent = () => {
+  const { handleSearch } = useContext(PokemonContext);
+  return (
+    <SearchBar
+      type="search"
+      placeholder="Search your Pokemon"
+      onChange={handleSearch}
+    />
+  );
+};

@@ -1,7 +1,7 @@
 import { useContext } from "react";
 import styled from "styled-components";
 import { PokemonContext } from "../contexts/PokemonContext";
-import { Card } from "../components/Card";
+import Card from "../components/Card";
 const ContentDiv = styled.div`
   display: flex;
   flex-wrap: wrap;
@@ -11,12 +11,15 @@ const ContentDiv = styled.div`
 `;
 
 export const Content = () => {
-  const { pokemons } = useContext(PokemonContext);
-  const list = pokemons.map((pokemon) => (
-    <div key={pokemon.id}>
-      <Card pokemon={pokemon} />
-    </div>
-  ));
+  const { pokemons, filter } = useContext(PokemonContext);
+  const list = pokemons.map(
+    (pokemon) =>
+      pokemon.name.includes(filter) && (
+        <div key={pokemon.id}>
+          <Card pokemon={pokemon} />
+        </div>
+      )
+  );
 
   return <ContentDiv>{list}</ContentDiv>;
 };
